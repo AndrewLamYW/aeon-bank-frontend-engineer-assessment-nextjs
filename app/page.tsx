@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import bannerPhoto from "./photos/banner.png";
-// import profilePhoto from "./photos/profile.png";
+import profilePhoto from "./photos/profile.png";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Home() {
+  const theme = useTheme();
+  const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -33,7 +40,7 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src={bannerPhoto}
+          src={smallScreen ? profilePhoto : bannerPhoto}
           alt="Andrew's Banner"
           sizes="100vw"
           style={{
