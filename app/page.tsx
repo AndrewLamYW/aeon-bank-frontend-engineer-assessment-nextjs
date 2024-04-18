@@ -36,6 +36,7 @@ export default function Home() {
           style={{
             width: "100%",
             height: "auto",
+            ...(smallScreen && { borderRadius: "100%" }),
           }}
           priority
         />
