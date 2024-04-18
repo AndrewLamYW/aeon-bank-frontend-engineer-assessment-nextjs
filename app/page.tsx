@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import banner from "../public/banner.png";
+import bannerPhoto from "./photos/banner.png";
+// import profilePhoto from "./photos/profile.png";
 
 export default function Home() {
   return (
@@ -32,7 +33,7 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src={banner}
+          src={bannerPhoto}
           alt="Andrew's Banner"
           sizes="100vw"
           style={{
