@@ -16,20 +16,22 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>AEON Bank Frontend Engineer Assessment</p>
-        <a
-          href="https://www.linkedin.com/in/andrewlamyw/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          by Andrew Lam 😉
-        </a>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/andrewlamyw/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            by Andrew Lam 😉
+          </a>
+        </div>
       </div>
 
       <div className={styles.center}>
         <Image
           className={styles.logo}
           src={smallScreen ? profilePhoto : bannerPhoto}
-          alt="Andrew's Banner"
+          alt="Andrew Lam's photo"
           sizes="100vw"
           style={{
             width: "100%",
