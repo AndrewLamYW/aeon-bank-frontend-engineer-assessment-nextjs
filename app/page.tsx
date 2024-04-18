@@ -1,12 +1,12 @@
 "use client";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 import bannerPhoto from "./photos/banner.png";
 import profilePhoto from "./photos/profile.png";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Link from "next/link";
 
 export default function Home() {
   const theme = useTheme();
@@ -15,27 +15,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+        <p>AEON Bank Frontend Engineer Assessment</p>
       </div>
 
       <div className={styles.center}>
@@ -53,55 +33,32 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <Link
-          href="/calculator"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="/calculator" className={styles.card}>
           <h2>
             Calculator <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
+          <p>
+            Challenge 1: Create a React page that works like a calculator that
+            can add two numbers.
+          </p>
         </Link>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="/navbar" className={styles.card}>
           <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
+            Navbar <span>-&gt;</span>
           </h2>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            Challenge 2: Create a blank page using React that contains the
+            navbar as below.
           </p>
-        </a>
+        </Link>
+
+        <Link href="/twosum" className={styles.card}>
+          <h2>
+            Two Sum II <span>-&gt;</span>
+          </h2>
+          <p>Challenge 3: Two Sum II- Input Array Is Sorted</p>
+        </Link>
       </div>
     </main>
   );

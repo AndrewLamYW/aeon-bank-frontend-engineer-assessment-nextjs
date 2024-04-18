@@ -210,12 +210,6 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-}
-
 @keyframes rotate {
   from {
     transform: rotate(360deg);
