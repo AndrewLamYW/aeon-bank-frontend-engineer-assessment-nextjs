@@ -18,12 +18,7 @@
   font-family: var(--font-mono);
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
+.description div {
   text-shadow: 0 0 5px yellow;
   animation: glow 2s infinite ease-in-out alternate;
 }
@@ -33,7 +28,7 @@
     text-shadow: 0 0 5px yellow;
   }
   to {
-    text-shadow: 0 0 240px yellow;
+    text-shadow: 0 0 120px yellow;
   }
 }
 
