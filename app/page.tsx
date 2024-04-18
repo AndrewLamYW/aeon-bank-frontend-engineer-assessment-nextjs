@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import banner from "../public/banner.png";
 
 export default function Home() {
   return (
@@ -31,10 +32,13 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src={banner}
+          alt="Andrew's Banner"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
           priority
         />
       </div>
