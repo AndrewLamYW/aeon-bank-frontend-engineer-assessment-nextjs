@@ -16,6 +16,13 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>AEON Bank Frontend Engineer Assessment</p>
+        <a
+          href="https://www.linkedin.com/in/andrewlamyw/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          by Andrew Lam 😉
+        </a>
       </div>
 
       <div className={styles.center}>
