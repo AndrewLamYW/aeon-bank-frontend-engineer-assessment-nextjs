@@ -1,5 +1,6 @@
 "use client";
 
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -31,7 +32,9 @@ export default function Calculator() {
 
   return (
     <Container maxWidth="xs" sx={{ height: "100vh" }}>
-      <Link href="/">HOME</Link>
+      <Button variant="outlined" startIcon={<ArrowBackIcon />} sx={{ mt: 3 }}>
+        <Link href="/">HOME</Link>
+      </Button>
 
       <Box sx={{ pt: 6 }}>
         <Typography variant="h1" gutterBottom>
