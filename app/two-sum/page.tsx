@@ -15,16 +15,14 @@ export default function TwoSum() {
   const [outputTuple, setReturnedTuple] = useState<[number, number]>();
   const [targetNumber, setTargetNumber] = useState<number>();
 
-  const numbers = inputArray; // Declare and assign the value of inputArray to numbers
-
   const findIndexOfTwoSum = () => {
     if (!targetNumber) return;
 
     let left = 0;
-    let right = numbers.length - 1;
+    let right = inputArray.length - 1;
 
     while (left < right) {
-      const sum = numbers[left] + numbers[right];
+      const sum = inputArray[left] + inputArray[right];
       if (sum === targetNumber) {
         setReturnedTuple([left + 1, right + 1]);
         return;
