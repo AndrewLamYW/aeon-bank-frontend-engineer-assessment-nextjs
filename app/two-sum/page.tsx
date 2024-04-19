@@ -7,48 +7,35 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { ChangeEvent, KeyboardEventHandler, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import Navbar from "../components/navbar/navbar";
 
-type FormInputs = {
-  numberForArray: string;
-  targetNumber: string;
-};
-
 export default function TwoSum() {
-  const [inputItem, setInputItem] = useState<string>();
   const [inputArray, setInputArray] = useState<number[]>([]);
+  const [inputItem, setInputItem] = useState<string>();
+  const [outputTuple, setReturnedTuple] = useState<[number, number]>();
+  const [targetNumber, setTargetNumber] = useState<number>();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<FormInputs>();
+  const numbers = inputArray; // Declare and assign the value of inputArray to numbers
 
-  const twoSum = (numbers: number[], target: number): number[] => {
+  const findIndexOfTwoSum = () => {
+    if (!targetNumber) return;
+
     let left = 0;
     let right = numbers.length - 1;
 
     while (left < right) {
       const sum = numbers[left] + numbers[right];
-
-      if (sum === target) {
-        return [left + 1, right + 1];
-      } else if (sum < target) {
+      if (sum === targetNumber) {
+        setReturnedTuple([left + 1, right + 1]);
+        return;
+      } else if (sum < targetNumber) {
         left++;
       } else {
         right--;
       }
     }
 
-    return [];
-  };
-
-  const onSubmit: SubmitHandler<FormInputs> = ({
-    numberForArray,
-    targetNumber,
-  }) => {
-    console.log(Number(numberForArray) + Number(targetNumber));
+    setReturnedTuple(undefined);
   };
 
   const handleAddToArray = () => {
@@ -61,6 +48,14 @@ export default function TwoSum() {
   ) => {
     if (event.key === "Enter") {
       handleAddToArray();
+    }
+  };
+
+  const handleInputTargetKeyPress: KeyboardEventHandler<HTMLDivElement> = (
+    event
+  ) => {
+    if (event.key === "Enter") {
+      findIndexOfTwoSum();
     }
   };
 
@@ -114,16 +109,15 @@ export default function TwoSum() {
             Implementation
           </Typography>
 
-          <Stack spacing={2}>
-            <Stack direction="row" spacing={4}>
+          <Box mb={4}>
+            <Stack direction="row" spacing={2} mb={2}>
               <TextField
-                label="Number to Add to Array"
-                type="number"
-                variant="filled"
-                value={inputItem}
+                label="Number to insert"
                 onChange={handleInputItemChange}
-                sx={{ flexGrow: 1 }}
                 onKeyDown={handleInputItemKeyPress}
+                type="number"
+                value={inputItem}
+                variant="filled"
               />
 
               <Button variant="contained" onClick={handleAddToArray}>
@@ -132,22 +126,26 @@ export default function TwoSum() {
             </Stack>
 
             <p>{inputArray.length ? `[${inputArray.join(", ")}]` : "[ ]"}</p>
+          </Box>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextField
-                label="Target Number"
-                type="number"
-                variant="filled"
-                {...register("targetNumber", { required: true })}
-              />
+          <Stack direction="row" spacing={2}>
+            <TextField
+              label="Target number"
+              onChange={(e) => setTargetNumber(Number(e.target.value))}
+              onKeyDown={handleInputTargetKeyPress}
+              type="number"
+              value={targetNumber}
+              variant="filled"
+            />
 
-              <Button variant="contained" type="submit">
-                Add Two Numbers
-              </Button>
-
-              <p>Returned Value:</p>
-            </form>
+            <Button variant="contained" onClick={findIndexOfTwoSum}>
+              Find Two Sum
+            </Button>
           </Stack>
+
+          <Box mt={2} display="inline-block">
+            Output: {outputTuple && `[${outputTuple?.join(", ")}]`}
+          </Box>
         </Box>
       </Container>
     </Box>
