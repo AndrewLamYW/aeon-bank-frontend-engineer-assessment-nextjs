@@ -1,0 +1,22 @@
+.navbar {
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+}
+
+.linksContainer {
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  padding: 0.5rem;
+  max-width: 200px;
+  width: 100%;
+}
