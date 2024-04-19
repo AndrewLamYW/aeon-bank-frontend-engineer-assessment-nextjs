@@ -18,18 +18,18 @@ export default function TwoSum() {
   const findIndexOfTwoSum = () => {
     if (!targetNumber) return;
 
-    let left = 0;
-    let right = inputArray.length - 1;
+    let leftIndex = 0;
+    let rightIndex = inputArray.length - 1;
 
-    while (left < right) {
-      const sum = inputArray[left] + inputArray[right];
+    while (leftIndex < rightIndex) {
+      const sum = inputArray[leftIndex] + inputArray[rightIndex];
       if (sum === targetNumber) {
-        setReturnedTuple([left + 1, right + 1]);
+        setReturnedTuple([leftIndex + 1, rightIndex + 1]);
         return;
       } else if (sum < targetNumber) {
-        left++;
+        leftIndex++;
       } else {
-        right--;
+        rightIndex--;
       }
     }
 
