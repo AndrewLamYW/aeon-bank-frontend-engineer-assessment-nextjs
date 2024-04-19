@@ -1,43 +1,73 @@
 "use client";
 
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type Inputs = {
+  num1: string;
+  num2: string;
+};
 
 export default function Calculator() {
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
-  const [total, setTotal] = useState("");
+  const [total, setTotal] = useState<number>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<Inputs>();
 
-  const handleNum1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNum1(e.target.value);
-  };
+  const onSubmit: SubmitHandler<Inputs> = ({ num1, num2 }) =>
+    setTotal(Number(num1) + Number(num2));
 
-  const handleNum2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNum2(e.target.value);
-  };
-
-  const handleAdd = () => {
-    const sum = Number(num1) + Number(num2);
-    setTotal(sum.toString());
-  };
+  const getHelperText = (fieldName: keyof Inputs) =>
+    errors[fieldName]?.type === "required" && "This field is required";
 
   return (
-    <div>
-      <Link href="/">Home</Link>
+    <Container maxWidth="xs">
+      <Link href="/">HOME</Link>
 
-      <div>
-        <label>Number 1:</label>
-        <input type="number" value={num1} onChange={handleNum1Change} />
-      </div>
+      <Box sx={{ pt: 6 }}>
+        <Typography variant="h1" gutterBottom>
+          Calculator
+        </Typography>
 
-      <div>
-        <label>Number 2:</label>
-        <input type="number" value={num2} onChange={handleNum2Change} />
-      </div>
+        <Typography variant="subtitle1" gutterBottom>
+          Adding Two Numbers
+        </Typography>
 
-      <button onClick={handleAdd}>Add</button>
+        <Stack component="form" onSubmit={handleSubmit(onSubmit)} spacing={2}>
+          <TextField
+            error={!!errors.num1}
+            helperText={getHelperText("num1")}
+            label="First Number"
+            type="number"
+            variant="filled"
+            {...register("num1", { required: true })}
+          />
 
-      <p>Total: {total}</p>
-    </div>
+          <TextField
+            error={!!errors.num2}
+            helperText={getHelperText("num2")}
+            label="Second Number"
+            type="number"
+            variant="filled"
+            {...register("num2", { required: true })}
+          />
+
+          <Button variant="contained" type="submit">
+            Add Two Numbers
+          </Button>
+
+          <p>Total: {isValid && total}</p>
+        </Stack>
+      </Box>
+    </Container>
   );
 }

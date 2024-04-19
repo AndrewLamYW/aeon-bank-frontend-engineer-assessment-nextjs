@@ -10,7 +10,7 @@ import profilePhoto from "./photos/profile.png";
 
 export default function Home() {
   const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const smallViewport = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <main className={styles.main}>
@@ -22,13 +22,13 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src={smallScreen ? profilePhoto : bannerPhoto}
+          src={smallViewport ? profilePhoto : bannerPhoto}
           alt="Andrew Lam's photo"
           sizes="100vw"
           style={{
             width: "100%",
             height: "auto",
-            ...(smallScreen && { borderRadius: "100%" }),
+            ...(smallViewport && { borderRadius: "100%" }),
           }}
           priority
         />
