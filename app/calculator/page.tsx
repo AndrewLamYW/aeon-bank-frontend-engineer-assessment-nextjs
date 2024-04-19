@@ -11,9 +11,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type Inputs = {
-  num1: string;
-  num2: string;
+type FormInputs = {
+  input1: string;
+  input2: string;
 };
 
 export default function Calculator() {
@@ -22,12 +22,12 @@ export default function Calculator() {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<Inputs>();
+  } = useForm<FormInputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = ({ num1, num2 }) =>
-    setTotal(Number(num1) + Number(num2));
+  const onSubmit: SubmitHandler<FormInputs> = ({ input1, input2 }) =>
+    setTotal(Number(input1) + Number(input2));
 
-  const getHelperText = (fieldName: keyof Inputs) =>
+  const getHelperText = (fieldName: keyof FormInputs) =>
     errors[fieldName]?.type === "required" && "This field is required";
 
   return (
@@ -47,21 +47,21 @@ export default function Calculator() {
 
         <Stack component="form" onSubmit={handleSubmit(onSubmit)} spacing={2}>
           <TextField
-            error={!!errors.num1}
-            helperText={getHelperText("num1")}
+            error={!!errors.input1}
+            helperText={getHelperText("input1")}
             label="First Number"
             type="number"
             variant="filled"
-            {...register("num1", { required: true })}
+            {...register("input1", { required: true })}
           />
 
           <TextField
-            error={!!errors.num2}
-            helperText={getHelperText("num2")}
+            error={!!errors.input2}
+            helperText={getHelperText("input2")}
             label="Second Number"
             type="number"
             variant="filled"
-            {...register("num2", { required: true })}
+            {...register("input2", { required: true })}
           />
 
           <Button variant="contained" type="submit">
