@@ -16,9 +16,6 @@ const theme = createTheme({
       fontWeight: 500,
     },
   },
-  palette: {
-    mode: "dark",
-  },
 });
 
 export default theme;

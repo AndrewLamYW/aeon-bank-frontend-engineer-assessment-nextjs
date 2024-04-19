@@ -30,7 +30,7 @@ export default function Calculator() {
     errors[fieldName]?.type === "required" && "This field is required";
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" sx={{ height: "100vh" }}>
       <Link href="/">HOME</Link>
 
       <Box sx={{ pt: 6 }}>
