@@ -144,7 +144,8 @@ export default function TwoSum() {
           </Stack>
 
           <Box mt={2} display="inline-block">
-            Output: {outputTuple && `[${outputTuple?.join(", ")}]`}
+            Output (indices of the two numbers):{" "}
+            {outputTuple && `[${outputTuple?.join(", ")}]`}
           </Box>
         </Box>
       </Container>
