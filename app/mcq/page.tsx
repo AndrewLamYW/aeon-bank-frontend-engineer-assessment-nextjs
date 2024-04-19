@@ -1,10 +1,13 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import Navbar from "../components/navbar/navbar";
 
 export default function Mcq() {
   return (
     <Box style={{ height: "100vh" }}>
+      <Navbar />
+
       <Container component="main" sx={{ py: 8 }} maxWidth="md">
         <Typography variant="h1" gutterBottom>
           Multiple-Choice Questions
