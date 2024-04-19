@@ -7,6 +7,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import bannerPhoto from "./photos/banner.png";
 import profilePhoto from "./photos/profile.png";
+import IconButton from "@mui/material/IconButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function Home() {
   const theme = useTheme();
@@ -69,6 +71,15 @@ export default function Home() {
           <p>Multiple-Choice Questions</p>
         </Link>
       </div>
+
+      <IconButton
+        aria-label="GitHub repository"
+        href="https://github.com/AndrewLamYW/aeon-bank-frontend-engineer-assessment-nextjs"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <GitHubIcon />
+      </IconButton>
     </main>
   );
 }
