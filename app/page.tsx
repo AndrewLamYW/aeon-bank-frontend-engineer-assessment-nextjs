@@ -55,7 +55,7 @@ export default function Home() {
           </p>
         </Link>
 
-        <Link href="/twosum" className={styles.card}>
+        <Link href="/two-sum" className={styles.card}>
           <h2>
             Two Sum II <span>-&gt;</span>
           </h2>
