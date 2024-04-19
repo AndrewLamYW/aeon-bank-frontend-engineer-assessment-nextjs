@@ -61,6 +61,13 @@ export default function Home() {
           </h2>
           <p>Challenge 3: Two Sum II- Input Array Is Sorted</p>
         </Link>
+
+        <Link href="/mcq" className={styles.card}>
+          <h2>
+            MCQ <span>-&gt;</span>
+          </h2>
+          <p>Multiple-Choice Questions</p>
+        </Link>
       </div>
     </main>
   );
