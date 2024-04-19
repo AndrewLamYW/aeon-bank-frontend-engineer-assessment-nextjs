@@ -9,6 +9,8 @@ import bannerPhoto from "./photos/banner.png";
 import profilePhoto from "./photos/profile.png";
 import IconButton from "@mui/material/IconButton";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Box from "@mui/material/Box";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function Home() {
   const theme = useTheme();
@@ -72,14 +74,25 @@ export default function Home() {
         </Link>
       </div>
 
-      <IconButton
-        aria-label="GitHub repository"
-        href="https://github.com/AndrewLamYW/aeon-bank-frontend-engineer-assessment-nextjs"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <GitHubIcon />
-      </IconButton>
+      <Box sx={{ mb: 10 }}>
+        <IconButton
+          aria-label="GitHub repository"
+          href="https://github.com/AndrewLamYW/aeon-bank-frontend-engineer-assessment-nextjs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <GitHubIcon />
+        </IconButton>
+
+        <IconButton
+          aria-label="LinkedIn profile"
+          href="https://www.linkedin.com/in/andrewlamyw/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <LinkedInIcon />
+        </IconButton>
+      </Box>
     </main>
   );
 }
