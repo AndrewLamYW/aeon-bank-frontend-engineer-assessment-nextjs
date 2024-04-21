@@ -17,8 +17,8 @@ export const NAV_LINKS = [
 
 export default function Navbar() {
   const [windowDimensions, setWindowDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
 
   const isMobile = useMemo(
