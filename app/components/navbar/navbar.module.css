@@ -1,16 +1,22 @@
-.navbar {
+.desktopNavbar {
   align-items: center;
   border-bottom: 1px solid #eaeaea;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   padding: 1rem 2rem;
 }
 
+@media screen and (min-width: 888px) {
+  .desktopNavbar {
+    display: flex;
+  }
+}
+
 .linksContainer {
-  gap: 2rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .searchInput {
