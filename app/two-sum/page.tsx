@@ -10,55 +10,56 @@ import { ChangeEvent, KeyboardEventHandler, useState } from "react";
 import Navbar from "../components/navbar/navbar";
 
 export default function TwoSum() {
-  const [inputArray, setInputArray] = useState<number[]>([]);
-  const [inputItem, setInputItem] = useState<string>();
-  const [outputTuple, setReturnedTuple] = useState<[number, number]>();
-  const [targetNumber, setTargetNumber] = useState<number>();
+  const [itemInput, setItemInput] = useState<string>();
+  const [items, setItems] = useState<number[]>([]);
+  const [outputTuple, setReturnedTuple] = useState<[number, number] | null>();
+  const [targetInput, setTargetInput] = useState<string>();
 
-  const findIndexOfTwoSum = () => {
-    if (!targetNumber) return;
+  const findIndexesOfTwoSum = () => {
+    if (!targetInput) return;
 
-    let leftIndex = 0;
-    let rightIndex = inputArray.length - 1;
+    for (let i = 0; i < items.length - 1; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        const sum = items[i] + items[j];
+        const target = Number(targetInput);
 
-    while (leftIndex < rightIndex) {
-      const sum = inputArray[leftIndex] + inputArray[rightIndex];
-      if (sum === targetNumber) {
-        setReturnedTuple([leftIndex + 1, rightIndex + 1]);
-        return;
-      } else if (sum < targetNumber) {
-        leftIndex++;
-      } else {
-        rightIndex--;
+        if (sum === target) {
+          setReturnedTuple([i + 1, j + 1]);
+          return;
+        }
       }
     }
 
-    setReturnedTuple(undefined);
+    // Handle case where target number is not found
+    setReturnedTuple(null);
   };
 
-  const handleAddToArray = () => {
-    setInputArray((prevArr) => [...prevArr, Number(inputItem)]);
-    setInputItem("");
-  };
+  const addToArray = () => {
+    const inputNumber = Number(itemInput);
 
-  const handleInputItemKeyPress: KeyboardEventHandler<HTMLDivElement> = (
-    event
-  ) => {
-    if (event.key === "Enter") {
-      handleAddToArray();
+    if (!isNaN(inputNumber)) {
+      setItems((prevArr) => [...prevArr, inputNumber]);
+      setItemInput("");
     }
   };
 
-  const handleInputTargetKeyPress: KeyboardEventHandler<HTMLDivElement> = (
-    event
-  ) => {
-    if (event.key === "Enter") {
-      findIndexOfTwoSum();
-    }
-  };
+  const handleKeyPress =
+    (callback: () => void): KeyboardEventHandler<HTMLDivElement> =>
+    (event) => {
+      if (event.key === "Enter") {
+        callback();
+      }
+    };
 
   const handleInputItemChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputItem(e.target.value);
+    setItemInput(e.target.value);
+  };
+
+  const resetState = () => {
+    setItems([]);
+    setItemInput("");
+    setReturnedTuple(undefined);
+    setTargetInput("");
   };
 
   return (
@@ -112,39 +113,45 @@ export default function TwoSum() {
               <TextField
                 label="Number to insert"
                 onChange={handleInputItemChange}
-                onKeyDown={handleInputItemKeyPress}
+                onKeyDown={handleKeyPress(addToArray)}
                 type="number"
-                value={inputItem}
+                value={itemInput}
                 variant="filled"
               />
 
-              <Button variant="contained" onClick={handleAddToArray}>
+              <Button variant="contained" onClick={addToArray}>
                 Add to Array
               </Button>
             </Stack>
 
-            <p>{inputArray.length ? `[${inputArray.join(", ")}]` : "[ ]"}</p>
+            <p>{items.length ? `[${items.join(", ")}]` : "[ ]"}</p>
           </Box>
 
           <Stack direction="row" spacing={2}>
             <TextField
               label="Target number"
-              onChange={(e) => setTargetNumber(Number(e.target.value))}
-              onKeyDown={handleInputTargetKeyPress}
+              onChange={(e) => setTargetInput(e.target.value)}
+              onKeyDown={handleKeyPress(findIndexesOfTwoSum)}
               type="number"
-              value={targetNumber}
+              value={targetInput}
               variant="filled"
             />
 
-            <Button variant="contained" onClick={findIndexOfTwoSum}>
+            <Button variant="contained" onClick={findIndexesOfTwoSum}>
               Find Two Sum
             </Button>
           </Stack>
 
-          <Box mt={2} display="inline-block">
+          <Box mt={2} mb={2}>
             Output (indices of the two numbers):{" "}
-            {outputTuple && `[${outputTuple?.join(", ")}]`}
+            {outputTuple === null
+              ? "No solution found"
+              : outputTuple && `[${outputTuple?.join(", ")}]`}
           </Box>
+
+          <Button variant="contained" onClick={resetState}>
+            RESET
+          </Button>
         </Box>
       </Container>
     </Box>
