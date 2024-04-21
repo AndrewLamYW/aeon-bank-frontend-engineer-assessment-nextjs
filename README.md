@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This [Next.js](https://nextjs.org/) project, built using [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), demonstrates my front-end development skills by directly addressing the [technical assessment requirements](https://drive.google.com/file/d/1AzF7f3aI3tNtd5f3qMQtjMAMbnbsHPVA/view?usp=sharing) for AEON Bank's [front-end developer role](https://drive.google.com/file/d/1J2CpfBeErngqe7g53B5dqOzSV5Wi1hH4/view?usp=sharing).
 
 ## Getting Started
 
